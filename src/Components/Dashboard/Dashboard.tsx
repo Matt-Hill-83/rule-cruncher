@@ -10,7 +10,7 @@ function Dashboard() {
   return (
     <div className={css.main}>
       <div className={css.instructions}>
-        <div style={{ maxWidth: "100%" }}>
+        <div style={{ maxWidth: "50%" }}>
           <MaterialTable
             columns={[
               { title: "Adı", field: "name" },
