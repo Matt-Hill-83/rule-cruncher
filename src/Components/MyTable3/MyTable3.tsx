@@ -55,7 +55,11 @@ export default function MyTable3() {
 
     const row = newRows.find((row) => row.id === rowId)
     if (row && columnName) {
-      row.alligator = !row.alligator
+      // messy gymnastics to avoid a type error when using object bracket notation
+      const testRow: { [key: string]: any } = { ...row }
+      testRow[columnName] = !testRow[columnName]
+      Object.assign(row, testRow)
+
       setRows(newRows)
     }
   }
@@ -64,9 +68,6 @@ export default function MyTable3() {
     const { row, column } = info
     const columnName: string = column.key
     const value: boolean = row[columnName]
-
-    console.log("value", value) // zzz
-    console.log("typeof value", typeof value) // zzz
 
     const className = cx(css.valueButton, {
       [css.true]: value,
