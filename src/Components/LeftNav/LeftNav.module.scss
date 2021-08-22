@@ -1,0 +1,20 @@
+.main {
+  position: absolute;
+  display: flex;
+  width: var(--leftNavWidth);
+  height: 100%;
+  // border: 1px solid red !important;
+  background: white;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+
+  border-right: 2px solid var(--nav-border-color);
+
+  .textBox {
+    display: flex;
+    color: blue;
+    align-items: center;
+    justify-content: center;
+  }
+}

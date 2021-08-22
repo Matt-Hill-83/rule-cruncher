@@ -1,0 +1,13 @@
+.main {
+  position: fixed;
+  display: flex;
+  height: var(--topNavHeight);
+  width: 100%;
+
+  background: white;
+  z-index: 1001;
+  top: 0;
+  left: 0;
+
+  border-bottom: 2px solid var(--nav-border-color);
+}

@@ -1,0 +1,77 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  background-color: rgb(238, 168, 124);
+  width: auto;
+  height: 100%;
+
+  margin-right: var(--CS-margin-02);
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+
+    background-color: rgb(175, 192, 178);
+    height: 100%;
+
+    .header {
+      display: flex;
+      position: relative;
+      height: 30%;
+      align-items: center;
+      padding-left: var(--CS-margin-01);
+      padding-right: var(--CS-margin-01);
+      background-color: rgb(144, 167, 148);
+
+      .stepNum {
+        display: flex;
+        position: absolute;
+
+        padding-right: var(--CS-margin-01);
+        padding-left: var(--CS-margin-01);
+
+        margin-right: var(--CS-margin-01);
+        border-radius: 0.5vh;
+        background-color: rgb(175, 192, 178);
+      }
+
+      .instruction {
+        display: flex;
+        justify-self: center;
+        align-self: center;
+        align-items: center;
+        margin: auto;
+        font-size: 2.5vh;
+      }
+    }
+    .body {
+      display: flex;
+      flex: 1;
+    }
+
+    .button1 {
+      display: flex;
+      align-self: flex-end;
+      justify-self: flex-start;
+      align-items: center;
+      justify-content: center;
+
+      width: min-content;
+      white-space: nowrap;
+      height: 4vh;
+      margin-top: auto;
+      margin-bottom: 0.5vh;
+      margin-right: 0.5vh;
+      background: #6da7db;
+      border: 1px solid #6a6aed;
+      color: #1c1c47;
+      min-width: 20%;
+    }
+  }
+}
