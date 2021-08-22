@@ -10,9 +10,15 @@ import cx from "classnames"
 
 function createRows() {
   const rows = [
-    { id: 0, alligator: true, bunny: false, cat: false },
-    { id: 1, alligator: false, bunny: true, cat: true },
-    { id: 2, alligator: true, bunny: false, cat: false },
+    {
+      id: 0,
+      alligator: true,
+      bunny: false,
+      cat: false,
+      restaurant: "Applebees",
+    },
+    { id: 1, alligator: false, bunny: true, cat: true, restaurant: "Denny's" },
+    { id: 2, alligator: true, bunny: false, cat: false, restaurant: "Denny's" },
   ]
   return rows
 }
@@ -21,6 +27,12 @@ export default function MyTable3() {
   const [rows, setRows] = useState(createRows)
 
   const columns = [
+    {
+      key: "id",
+      name: "Rule Id",
+      // formatter: (info: any) => renderButton(info),
+      width: 30,
+    },
     {
       key: "alligator",
       name: "Alligator",
@@ -37,6 +49,12 @@ export default function MyTable3() {
       key: "cat",
       name: "Cat",
       formatter: (info: any) => renderButton(info),
+      width: 30,
+    },
+    {
+      key: "restaurant",
+      name: "Restaurant",
+      // formatter: (info: any) => renderButton(info),
       width: 30,
     },
   ]
