@@ -78,7 +78,7 @@ export default function MyTable3() {
         onClick={() => clickButton({ columnName, rowId: row.id })}
         className={className}
       >
-        {value ? "true" : "false"}
+        {value ? "true" : ""}
       </Button>
     )
   }

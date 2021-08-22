@@ -1,13 +1,19 @@
 .main {
-  width: 100%;
-  // border: 10px solid red !important;
+  display: flex;
+  flex: 1;
   background-color: var(--rdg-bk-color);
+  margin: var(--CS-margin-02);
 
   :global {
     .rdg-header-row {
       background-color: var(--rdg-header-bk-color) !important;
     }
     .rdg-cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      color: var(--white-800);
       background-color: var(--rdg-cell-bk-color) !important;
       padding: 0px;
     }
@@ -26,18 +32,18 @@
   }
 
   .true {
-    background-color: var(--green-100);
+    background-color: var(--rdg-button-true);
 
     &:hover {
-      background-color: var(--green-500);
+      background-color: var(--rdg-button-true-hover);
     }
   }
 
   .false {
-    background-color: var(--red-400);
+    background-color: var(--rdg-button-false);
 
     &:hover {
-      background-color: var(--red-500);
+      background-color: var(--rdg-button-false-hover);
     }
   }
 }
