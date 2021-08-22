@@ -175,19 +175,7 @@ export default function MyTable0(data) {
         Header: "ID",
         accessor: "id",
       },
-      {
-        Header: "Name",
-        columns: [
-          {
-            Header: "First Name",
-            accessor: "firstName",
-          },
-          {
-            Header: "Last Name",
-            accessor: "lastName",
-          },
-        ],
-      },
+
       {
         Header: "Info",
         columns: [
