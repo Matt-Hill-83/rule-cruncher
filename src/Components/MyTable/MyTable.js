@@ -7,6 +7,7 @@ import update from "immutability-helper"
 import makeData from "./makeData"
 import { HTML5Backend } from "react-dnd-html5-backend"
 
+const DND_ITEM_TYPE = "row"
 const Styles = styled.div`
   padding: 1rem;
 
@@ -36,7 +37,7 @@ const Styles = styled.div`
   }
 `
 
-const Table = ({ columns, data }: { columns: any; data: any }) => {
+const Table = ({ columns, data }) => {
   const [records, setRecords] = React.useState(data)
 
   const getRowId = React.useCallback((row) => {
@@ -50,7 +51,7 @@ const Table = ({ columns, data }: { columns: any; data: any }) => {
       getRowId,
     })
 
-  const moveRow = (dragIndex: any, hoverIndex: any) => {
+  const moveRow = (dragIndex, hoverIndex) => {
     const dragRecord = records[dragIndex]
     setRecords(
       update(records, {
@@ -60,16 +61,6 @@ const Table = ({ columns, data }: { columns: any; data: any }) => {
         ],
       })
     )
-  }
-
-  const renderedRow: any = (row: any, index: number) => {
-    if (prepareRow(row) !== null && prepareRow(row) !== undefined) {
-      return prepareRow(row)
-    } else {
-      return (
-        <Row index={index} row={row} moveRow={moveRow} {...row.getRowProps()} />
-      )
-    }
   }
 
   return (
@@ -87,18 +78,15 @@ const Table = ({ columns, data }: { columns: any; data: any }) => {
         </thead>
         <tbody {...getTableBodyProps()}>
           {rows.map(
-            (row, index) => {
-              return renderedRow(row)
-            }
-            // (row, index) =>
-            //   prepareRow(row) || (
-            //     <Row
-            //       index={index}
-            //       row={row}
-            //       moveRow={moveRow}
-            //       {...row.getRowProps()}
-            //     />
-            //   )
+            (row, index) =>
+              prepareRow(row) || (
+                <Row
+                  index={index}
+                  row={row}
+                  moveRow={moveRow}
+                  {...row.getRowProps()}
+                />
+              )
           )}
         </tbody>
       </table>
@@ -106,23 +94,15 @@ const Table = ({ columns, data }: { columns: any; data: any }) => {
   )
 }
 
-const DND_ITEM_TYPE = "row"
+// const DND_ITEM_TYPE = "row"
 
-const Row = ({
-  row,
-  index,
-  moveRow,
-}: {
-  row: any
-  index: number
-  moveRow: any
-}) => {
-  const dropRef: any = React.useRef(null)
-  const dragRef: any = React.useRef(null)
+const Row = ({ row, index, moveRow }) => {
+  const dropRef = React.useRef(null)
+  const dragRef = React.useRef(null)
 
   const [, drop] = useDrop({
     accept: DND_ITEM_TYPE,
-    hover(item: any, monitor) {
+    hover(item, monitor) {
       if (!dropRef.current) {
         return
       }
@@ -133,12 +113,12 @@ const Row = ({
         return
       }
       // Determine rectangle on screen
-      const hoverBoundingRect: any = dropRef.current.getBoundingClientRect()
+      const hoverBoundingRect = dropRef.current.getBoundingClientRect()
       // Get vertical middle
       const hoverMiddleY =
         (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2
       // Determine mouse position
-      const clientOffset: any = monitor.getClientOffset()
+      const clientOffset = monitor.getClientOffset()
       // Get pixels to the top
       const hoverClientY = clientOffset.y - hoverBoundingRect.top
       // Only perform the move when the mouse has crossed half of the items height
@@ -163,8 +143,9 @@ const Row = ({
   })
 
   const [{ isDragging }, drag, preview] = useDrag({
-    type: "any",
-    item: { type: DND_ITEM_TYPE, index },
+    type: DND_ITEM_TYPE,
+    item: { index },
+    // item: { type: DND_ITEM_TYPE, index },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
@@ -178,7 +159,7 @@ const Row = ({
   return (
     <tr ref={dropRef} style={{ opacity }}>
       <td ref={dragRef}>move</td>
-      {row.cells.map((cell: any) => {
+      {row.cells.map((cell) => {
         return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
       })}
     </tr>
@@ -186,7 +167,7 @@ const Row = ({
 }
 
 const App = () => {
-  const columns: any = React.useMemo(
+  const columns = React.useMemo(
     () => [
       {
         Header: "ID",
