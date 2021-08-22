@@ -30,7 +30,6 @@ export default function MyTable3() {
     {
       key: "id",
       name: "Rule Id",
-      // formatter: (info: any) => renderButton(info),
       width: 30,
     },
     {
@@ -52,9 +51,15 @@ export default function MyTable3() {
       width: 30,
     },
     {
+      key: "",
+      name: "",
+      formatter: (info: any) => renderArrow(info),
+      width: 30,
+    },
+    {
       key: "restaurant",
       name: "Restaurant",
-      // formatter: (info: any) => renderButton(info),
+      formatter: (info: any) => renderRestaurant(info),
       width: 30,
     },
   ]
@@ -80,6 +85,16 @@ export default function MyTable3() {
 
       setRows(newRows)
     }
+  }
+
+  const renderArrow = (info: any) => {
+    return <div className={css.arrow}>{`===>`}</div>
+  }
+
+  const renderRestaurant = (info: any) => {
+    const { row, column } = info
+    console.log("info", info) // zzz
+    return <div className={css.arrow}>{`===>`}</div>
   }
 
   const renderButton = (info: any) => {
