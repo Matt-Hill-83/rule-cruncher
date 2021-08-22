@@ -63,6 +63,20 @@ const Table = ({ columns, data }) => {
     )
   }
 
+  const renderRows = (rows) => {
+    return rows.map(
+      (row, index) =>
+        prepareRow(row) || (
+          <Row
+            index={index}
+            row={row}
+            moveRow={moveRow}
+            {...row.getRowProps()}
+          />
+        )
+    )
+  }
+
   return (
     <DndProvider backend={HTML5Backend}>
       <table {...getTableProps()}>
@@ -76,19 +90,7 @@ const Table = ({ columns, data }) => {
             </tr>
           ))}
         </thead>
-        <tbody {...getTableBodyProps()}>
-          {rows.map(
-            (row, index) =>
-              prepareRow(row) || (
-                <Row
-                  index={index}
-                  row={row}
-                  moveRow={moveRow}
-                  {...row.getRowProps()}
-                />
-              )
-          )}
-        </tbody>
+        <tbody {...getTableBodyProps()}>{renderRows(rows)}</tbody>
       </table>
     </DndProvider>
   )
@@ -166,7 +168,7 @@ const Row = ({ row, index, moveRow }) => {
   )
 }
 
-const App = () => {
+export default function MyTable0(data) {
   const columns = React.useMemo(
     () => [
       {
@@ -211,13 +213,11 @@ const App = () => {
     []
   )
 
-  const data = React.useMemo(() => makeData(5), [])
+  const theData = React.useMemo(() => makeData(5), [])
 
   return (
     <Styles>
-      <Table columns={columns} data={data} />
+      <Table columns={columns} data={theData} />
     </Styles>
   )
 }
-
-export default App

@@ -5,6 +5,8 @@ import { SortableContainer, SortableElement } from "react-sortable-hoc"
 import { ITEMS } from "./data"
 import arrayMove from "./arrayMove"
 
+import css from "./MyTable2.module.scss"
+
 const MyTableWrapper = styled.div`
   padding: 10px;
 
@@ -57,19 +59,13 @@ const MyTable2 = () => {
 
   return (
     <MyTableWrapper>
-      <table className="table table-dark fixed_header">
+      <table className="table table fixed_header">
         <thead>
           <tr>
             <th>First</th>
             <th>Second</th>
             <th>Third</th>
             <th>Forth</th>
-          </tr>
-          <tr>
-            <th>This</th>
-            <th>is</th>
-            <th>second</th>
-            <th>row</th>
           </tr>
         </thead>
         <SortableCont

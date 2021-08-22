@@ -1,5 +1,36 @@
 .main {
-  display: flex;
-  flex: 1;
-  border: 4px solid blue !important;
+  padding: 10px;
+
+  .fixed_header {
+    width: 800px;
+    table-layout: fixed;
+    border-collapse: collapse;
+
+    & > tbody {
+      display: block;
+      width: 807px;
+      overflow: auto;
+      height: 400px;
+      cursor: grabbing;
+      background: grey;
+    }
+
+    & > thead {
+      background: yellow;
+      color: black;
+
+      & > tr {
+        display: block;
+        //width: 793px;
+      }
+    }
+
+    & > thead th,
+    & > tbody td {
+      padding: 5px;
+      text-align: left;
+      width: 200px;
+      border: 1px solid #000;
+    }
+  }
 }

@@ -1,6 +1,6 @@
 import React from "react"
 
-import css from "./MyTable.module.scss"
+import css from "./MyTable1.module.scss"
 
 import MyMultiSelect from "Components/MultiSelect/MultiSelect"
 import MaterialTable, { MTableToolbar } from "material-table"
@@ -13,7 +13,7 @@ const listItems = [
 
 const multiSelectProps = { listItems, className: css.multiPicker }
 
-export default function MyTable() {
+export default function MyTable1() {
   return (
     <div className={css.main}>
       <MaterialTable
