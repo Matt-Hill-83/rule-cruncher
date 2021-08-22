@@ -7,9 +7,8 @@ import Spacer from "../Spacer/Spacer"
 
 import { InstructionsPanelPropsType } from "../InstructionsPanel/types"
 import { InstructionStepProps } from "../InstructionStep/types"
-import ChartsPanel from "../ChartsPanel/ChartsPanel"
+// import ChartsPanel from "../ChartsPanel/ChartsPanel"
 import MyMultiSelect from "../MultiSelect/MultiSelect"
-import Counter from "../Counter/Counter"
 
 const stepPropsGroup: InstructionStepProps[] = [
   {
@@ -43,9 +42,6 @@ function Dashboard() {
   return (
     <div className={css.main}>
       <div className={css.instructions}>
-        <Counter />
-      </div>
-      <div className={css.instructions}>
         <InstructionsPanel {...InstructionsPanelProps} />
       </div>
       <Spacer />
@@ -53,9 +49,7 @@ function Dashboard() {
         <MyMultiSelect {...multiSelectProps} />
       </div>
       <Spacer />
-      <div className={css.charts}>
-        <ChartsPanel />
-      </div>
+      <div className={css.charts}></div>
       <Spacer />
     </div>
   )
