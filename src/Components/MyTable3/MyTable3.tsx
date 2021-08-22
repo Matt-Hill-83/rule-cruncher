@@ -2,7 +2,6 @@ import { useState } from "react"
 import { DndProvider } from "react-dnd"
 import { HTML5Backend } from "react-dnd-html5-backend"
 
-// import { DraggableRowRenderer } from './components/RowRenderers';
 import DataGrid from "react-data-grid"
 import { DraggableRowRenderer } from "./DraggableRowRenderer"
 
@@ -11,51 +10,74 @@ import { Button } from "react-bootstrap"
 
 function createRows() {
   const rows = [
-    { id: 0, alligator: true, bunny: false },
-    { id: 1, alligator: false, bunny: true },
-    { id: 2, alligator: true, bunny: false },
+    { id: 0, alligator: true, bunny: false, cat: false },
+    { id: 1, alligator: false, bunny: true, cat: true },
+    { id: 2, alligator: true, bunny: false, cat: false },
   ]
   return rows
 }
 
-const clickButton = (info: any) => {
-  console.log("info", info) // zzz
-}
-
-const renderAlligator = (info: any) => {
-  const { row } = info
-  const { alligator } = row
-
-  return (
-    <Button onClick={() => clickButton(info)} className={css.valueButton}>
-      {alligator ? "true" : "false"}
-    </Button>
-  )
-}
-
-const columns = [
-  {
-    key: "alligator",
-    name: "Alligator",
-    formatter: (info: any) => renderAlligator(info),
-    width: 30,
-  },
-  {
-    key: "bunny",
-    name: "Bunny",
-    formatter: (info: any) => renderAlligator(info),
-    width: 30,
-  },
-  {
-    key: "caterpillar",
-    name: "Caterpillar",
-    formatter: (info: any) => renderAlligator(info),
-    width: 30,
-  },
-]
-
 export default function MyTable3() {
   const [rows, setRows] = useState(createRows)
+
+  const columns = [
+    {
+      key: "alligator",
+      name: "Alligator",
+      formatter: (info: any) => renderAlligator(info),
+      width: 30,
+    },
+    {
+      key: "bunny",
+      name: "Bunny",
+      formatter: (info: any) => renderAlligator(info),
+      width: 30,
+    },
+    {
+      key: "cat",
+      name: "Cat",
+      formatter: (info: any) => renderAlligator(info),
+      width: 30,
+    },
+  ]
+
+  // Todo - add rule number and drag handle
+  // Todo - add output table
+
+  const clickButton = ({
+    columnName,
+    rowId,
+  }: {
+    columnName: string
+    rowId: number
+  }) => {
+    const newRows = [...rows]
+
+    const row = newRows.find((row) => row.id === rowId)
+    console.log("row", row) // zzz
+    if (row && columnName) {
+      row.alligator = !row.alligator
+      setRows(newRows)
+    }
+  }
+
+  const renderAlligator = (info: any) => {
+    const { row, column } = info
+    console.log("info", info) // zzz
+
+    const columnName: string = column.key
+    console.log("columnName", columnName) // zzz
+    const value = row[columnName]
+
+    return (
+      <Button
+        onClick={() => clickButton({ columnName, rowId: row.id })}
+        className={css.valueButton}
+      >
+        {value ? "true" : "false"}
+      </Button>
+    )
+  }
 
   console.log("rows", rows) // zzz
   function onRowReorder(fromIndex: number, toIndex: number) {
