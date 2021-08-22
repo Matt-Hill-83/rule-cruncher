@@ -1,12 +1,12 @@
 import { useState } from "react"
 import { DndProvider } from "react-dnd"
 import { HTML5Backend } from "react-dnd-html5-backend"
-
 import DataGrid from "react-data-grid"
 import { DraggableRowRenderer } from "./DraggableRowRenderer"
 
 import css from "./MyTable3.module.scss"
 import { Button } from "react-bootstrap"
+import cx from "classnames"
 
 function createRows() {
   const rows = [
@@ -54,7 +54,6 @@ export default function MyTable3() {
     const newRows = [...rows]
 
     const row = newRows.find((row) => row.id === rowId)
-    console.log("row", row) // zzz
     if (row && columnName) {
       row.alligator = !row.alligator
       setRows(newRows)
@@ -63,23 +62,23 @@ export default function MyTable3() {
 
   const renderAlligator = (info: any) => {
     const { row, column } = info
-    console.log("info", info) // zzz
-
     const columnName: string = column.key
-    console.log("columnName", columnName) // zzz
-    const value = row[columnName]
+    const value: string = row[columnName]
+
+    const className = cx(css.valueButton, {
+      [css.true]: value,
+    })
 
     return (
       <Button
         onClick={() => clickButton({ columnName, rowId: row.id })}
-        className={css.valueButton}
+        className={className}
       >
         {value ? "true" : "false"}
       </Button>
     )
   }
 
-  console.log("rows", rows) // zzz
   function onRowReorder(fromIndex: number, toIndex: number) {
     const newRows = [...rows]
     newRows.splice(toIndex, 0, newRows.splice(fromIndex, 1)[0])
