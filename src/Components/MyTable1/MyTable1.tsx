@@ -3,7 +3,7 @@ import React from "react"
 import css from "./MyTable1.module.scss"
 
 import MyMultiSelect from "Components/MultiSelect/MultiSelect"
-import MaterialTable, { MTableToolbar } from "material-table"
+import MaterialTable from "material-table"
 
 const listItems = [
   { title: "Alligator", year: 1994 },
@@ -19,25 +19,26 @@ export default function MyTable1() {
       <MaterialTable
         options={{
           toolbar: false,
+          paging: false,
         }}
-        components={{
-          Toolbar: (props) => (
-            <div style={{ backgroundColor: "#e8eaf5" }}>
-              <MTableToolbar {...props} />
-            </div>
-          ),
-        }}
+        components={{}}
         columns={[
-          { title: "Adı", field: "name" },
-          { title: "Year", field: "birthYear", type: "numeric" },
+          { title: <MyMultiSelect {...multiSelectProps} />, field: "name" },
+          { title: "Bunny", field: "birthYear", type: "numeric" },
           {
             field: "url",
             title: "Avatar",
-            render: () => (
-              <div style={{ width: 50, borderRadius: "50%" }}>
-                <MyMultiSelect {...multiSelectProps} />
-              </div>
-            ),
+            render: () => <MyMultiSelect {...multiSelectProps} />,
+          },
+          {
+            field: "url",
+            title: "Avatar",
+            render: () => <MyMultiSelect {...multiSelectProps} />,
+          },
+          {
+            field: "url",
+            title: "Avatar",
+            render: () => <MyMultiSelect {...multiSelectProps} />,
           },
         ]}
         data={[
