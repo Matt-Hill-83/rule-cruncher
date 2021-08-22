@@ -4,58 +4,53 @@ import { HTML5Backend } from "react-dnd-html5-backend"
 
 // import { DraggableRowRenderer } from './components/RowRenderers';
 import DataGrid from "react-data-grid"
-import { Column } from "react-data-grid"
 import { DraggableRowRenderer } from "./DraggableRowRenderer"
 
 import css from "./MyTable3.module.scss"
-interface Row {
-  id: number
-  task: string
-  complete: number
-  priority: string
-  issueType: string
-}
+import { Button } from "react-bootstrap"
 
-function createRows(): readonly Row[] {
-  const rows = []
-  for (let i = 1; i < 8; i++) {
-    rows.push({
-      id: i,
-      task: `Task ${i}`,
-      complete: Math.min(100, Math.round(Math.random() * 110)),
-      priority: ["Critical", "High", "Medium", "Low"][
-        Math.round(Math.random() * 3)
-      ],
-      issueType: ["Bug", "Improvement", "Epic", "Story"][
-        Math.round(Math.random() * 3)
-      ],
-    })
-  }
-
+function createRows() {
+  const rows = [
+    { id: 0, alligator: true, bunny: false },
+    { id: 1, alligator: false, bunny: true },
+    { id: 2, alligator: true, bunny: false },
+  ]
   return rows
 }
 
-const columns: readonly Column<Row>[] = [
+const clickButton = (info: any) => {
+  console.log("info", info) // zzz
+}
+
+const renderAlligator = (info: any) => {
+  const { row } = info
+  const { alligator } = row
+
+  return (
+    <Button onClick={() => clickButton(info)} className={css.valueButton}>
+      {alligator ? "true" : "false"}
+    </Button>
+  )
+}
+
+const columns = [
   {
-    key: "id",
-    name: "ID",
-    width: 80,
+    key: "alligator",
+    name: "Alligator",
+    formatter: (info: any) => renderAlligator(info),
+    width: 30,
   },
   {
-    key: "task",
-    name: "Title",
+    key: "bunny",
+    name: "Bunny",
+    formatter: (info: any) => renderAlligator(info),
+    width: 30,
   },
   {
-    key: "priority",
-    name: "Priority",
-  },
-  {
-    key: "issueType",
-    name: "Issue Type",
-  },
-  {
-    key: "complete",
-    name: "% Complete",
+    key: "caterpillar",
+    name: "Caterpillar",
+    formatter: (info: any) => renderAlligator(info),
+    width: 30,
   },
 ]
 
