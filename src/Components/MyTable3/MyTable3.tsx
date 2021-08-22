@@ -7,6 +7,7 @@ import DataGrid from "react-data-grid"
 import { Column } from "react-data-grid"
 import { DraggableRowRenderer } from "./DraggableRowRenderer"
 
+import css from "./MyTable3.module.scss"
 interface Row {
   id: number
   task: string
@@ -17,7 +18,7 @@ interface Row {
 
 function createRows(): readonly Row[] {
   const rows = []
-  for (let i = 1; i < 500; i++) {
+  for (let i = 1; i < 8; i++) {
     rows.push({
       id: i,
       task: `Task ${i}`,
@@ -72,6 +73,7 @@ export default function MyTable3() {
   return (
     <DndProvider backend={HTML5Backend}>
       <DataGrid
+        className={css.main}
         columns={columns}
         rows={rows}
         rowRenderer={(p) => (
