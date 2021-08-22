@@ -8,6 +8,7 @@ import {
 } from "react-table"
 
 import makeData from "./makeData"
+import MyMultiSelect from "Components/MultiSelect/MultiSelect"
 
 const Styles = styled.div`
   width: 100%;
@@ -222,44 +223,26 @@ function MyReactTable4({ theData }) {
   const columns = React.useMemo(
     () => [
       {
-        Header: "Name",
-        columns: [
-          {
-            Header: "First Name",
-            accessor: "firstName",
-          },
-          {
-            Header: "Last Name",
-            accessor: "lastName",
-          },
-        ],
+        Header: "First Name",
+        accessor: "firstName",
       },
       {
-        Header: "Info",
-        columns: [
-          {
-            Header: "Age",
-            accessor: "age",
-            // width: 50,
-            align: "right",
-          },
-          {
-            Header: "Visits",
-            accessor: "visits",
-            // width: 50,
-            align: "right",
-          },
-          {
-            Header: "Status",
-            accessor: "status",
-          },
-          {
-            Header: "Profile Progress",
-            accessor: "progress",
-          },
-        ],
+        Header: "Last Name",
+        accessor: "lastName",
+      },
+      {
+        Header: "visits",
+        accessor: "visits",
+      },
+      {
+        Header: "Age",
+        accessor: "age",
+        maxWidth: 70,
+        minWidth: 70,
+        Cell: (props) => <MyMultiSelect />,
       },
     ],
+
     []
   )
 

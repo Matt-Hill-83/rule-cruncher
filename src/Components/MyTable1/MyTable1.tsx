@@ -26,11 +26,6 @@ export default function MyTable1() {
               <MTableToolbar {...props} />
             </div>
           ),
-          // Toolbar: (props) => (
-          //   <div style={{ backgroundColor: "#e8eaf5" }}>
-          //     <MTableToolbar {...props} />
-          //   </div>
-          // ),
         }}
         columns={[
           { title: "Adı", field: "name" },

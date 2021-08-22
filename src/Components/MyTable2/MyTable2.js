@@ -17,7 +17,7 @@ const MyTableWrapper = styled.div`
 
     & > tbody {
       display: block;
-      width: 807px;
+      width: auto;
       overflow: auto;
       height: 400px;
       cursor: grabbing;
@@ -59,7 +59,7 @@ const MyTable2 = () => {
 
   return (
     <MyTableWrapper>
-      <table className="table table fixed_header">
+      <table className="table fixed_header">
         <thead>
           <tr>
             <th>First</th>
