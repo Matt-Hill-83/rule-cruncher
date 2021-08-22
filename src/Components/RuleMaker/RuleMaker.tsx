@@ -3,6 +3,7 @@ import React from "react"
 import css from "./RuleMaker.module.scss"
 
 import MyMultiSelect from "Components/MultiSelect/MultiSelect"
+import MyTable from "Components/MyTable/MyTable"
 
 const listItems = [
   { title: "Alligator", year: 1994 },
@@ -15,7 +16,8 @@ const multiSelectProps = { listItems, className: css.multiPicker }
 export default function RuleMaker() {
   return (
     <div className={css.main}>
-      <MyMultiSelect {...multiSelectProps} />
+      <MyTable />
+      {/* <MyMultiSelect {...multiSelectProps} /> */}
     </div>
   )
 }

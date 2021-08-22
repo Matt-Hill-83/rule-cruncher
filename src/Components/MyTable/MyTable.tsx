@@ -3,7 +3,7 @@ import React from "react"
 import css from "./MyTable.module.scss"
 
 import MyMultiSelect from "Components/MultiSelect/MultiSelect"
-import MaterialTable from "material-table"
+import MaterialTable, { MTableToolbar } from "material-table"
 
 const listItems = [
   { title: "Alligator", year: 1994 },
@@ -17,6 +17,21 @@ export default function MyTable() {
   return (
     <div className={css.main}>
       <MaterialTable
+        options={{
+          toolbar: false,
+        }}
+        components={{
+          Toolbar: (props) => (
+            <div style={{ backgroundColor: "#e8eaf5" }}>
+              <MTableToolbar {...props} />
+            </div>
+          ),
+          // Toolbar: (props) => (
+          //   <div style={{ backgroundColor: "#e8eaf5" }}>
+          //     <MTableToolbar {...props} />
+          //   </div>
+          // ),
+        }}
         columns={[
           { title: "Adı", field: "name" },
           { title: "Year", field: "birthYear", type: "numeric" },
