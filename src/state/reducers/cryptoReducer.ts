@@ -1,4 +1,4 @@
-const initialState = "BTC"
+const initialState = "Agnostic"
 
 const reducer = (
   state: string = initialState,
