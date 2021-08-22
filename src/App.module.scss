@@ -1,0 +1,12 @@
+@import "src/Styles/global.module.scss";
+
+.main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  // border: 2px solid purple;
+  background: #b0b0eb;
+  height: 100vh;
+}

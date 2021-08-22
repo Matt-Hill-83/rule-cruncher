@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react"
+
+import css from "./App.module.scss"
+import Dashboard from "./Components/Dashboard/Dashboard"
+import TopNav from "./Components/TopNav/TopNav"
+import LeftNav from "./Components/LeftNav/LeftNav"
+
+import { IMyState, IPowerPanelProps } from "./types"
 
 function App() {
+  let defaultState: IMyState = { power: 0, show: true }
+
+  const [myState, setMyState] = useState<IMyState>(defaultState)
+
+  const setDefaultState = async () => {
+    setTimeout(() => {
+      setMyState((oldState) => {
+        return {
+          ...oldState,
+          power: 3,
+        }
+      })
+    }, 0)
+  }
+
+  useEffect(() => {
+    setDefaultState()
+  }, [])
+
+  const powerPanelProps: IPowerPanelProps = {
+    myState,
+    setMyState,
+  }
+
+  console.log("powerPanelProps", powerPanelProps) // zzz
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={css.main}>
+      {JSON.stringify(myState)}
+      <TopNav powerPanelProps={powerPanelProps}></TopNav>
+      <LeftNav myState={myState} setMyState={setMyState} />
+      <Dashboard />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
