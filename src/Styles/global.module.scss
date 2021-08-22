@@ -8,7 +8,10 @@ body {
   --white-400: rgb(241, 241, 241);
   --white-500: rgb(250, 249, 250);
 
+  --red-400: rgb(250, 134, 134);
+  --red-500: rgb(247, 89, 89);
   --green-100: rgb(156, 169, 147);
+  --green-500: rgb(96, 117, 81);
   --blue-100: rgb(112, 152, 196);
 
   --purple-500: rgb(77, 52, 113);
@@ -19,4 +22,9 @@ body {
 
   --topNavHeight: 50px;
   --leftNavWidth: 14vh;
+
+  // Grid
+  --rdg-bk-color: var(--white-200);
+  --rdg-cell-bk-color: var(--white-100);
+  --rdg-header-bk-color: var(--white-500);
 }

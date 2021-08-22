@@ -1,9 +1,19 @@
 .main {
   width: 100%;
-  border: 10px solid red !important;
+  // border: 10px solid red !important;
+  background-color: var(--rdg-bk-color);
+
+  :global {
+    .rdg-header-row {
+      background-color: var(--rdg-header-bk-color) !important;
+    }
+    .rdg-cell {
+      background-color: var(--rdg-cell-bk-color) !important;
+      padding: 0px;
+    }
+  }
 
   .valueButton {
-    background-color: green;
     width: 100%;
     height: 100%;
     border: 0;
@@ -14,10 +24,20 @@
     align-items: center;
     justify-content: center;
   }
+
   .true {
-    background-color: red;
+    background-color: var(--green-100);
+
+    &:hover {
+      background-color: var(--green-500);
+    }
   }
+
   .false {
-    background-color: red;
+    background-color: var(--red-400);
+
+    &:hover {
+      background-color: var(--red-500);
+    }
   }
 }

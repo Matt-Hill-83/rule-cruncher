@@ -24,19 +24,19 @@ export default function MyTable3() {
     {
       key: "alligator",
       name: "Alligator",
-      formatter: (info: any) => renderAlligator(info),
+      formatter: (info: any) => renderButton(info),
       width: 30,
     },
     {
       key: "bunny",
       name: "Bunny",
-      formatter: (info: any) => renderAlligator(info),
+      formatter: (info: any) => renderButton(info),
       width: 30,
     },
     {
       key: "cat",
       name: "Cat",
-      formatter: (info: any) => renderAlligator(info),
+      formatter: (info: any) => renderButton(info),
       width: 30,
     },
   ]
@@ -60,13 +60,17 @@ export default function MyTable3() {
     }
   }
 
-  const renderAlligator = (info: any) => {
+  const renderButton = (info: any) => {
     const { row, column } = info
     const columnName: string = column.key
-    const value: string = row[columnName]
+    const value: boolean = row[columnName]
+
+    console.log("value", value) // zzz
+    console.log("typeof value", typeof value) // zzz
 
     const className = cx(css.valueButton, {
       [css.true]: value,
+      [css.false]: !value,
     })
 
     return (
