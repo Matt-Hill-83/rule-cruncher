@@ -12,7 +12,6 @@ export default function OutputTable(props: any) {
   const [rows, setRows] = useState([dummyRow])
 
   useEffect(() => {
-    console.log("useEffect - IT") // zzz
     setRows(inputTableRows)
   }, [inputTableRows])
 

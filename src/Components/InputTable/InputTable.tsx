@@ -144,7 +144,7 @@ export default function InputTable(props: any) {
   function onRowReorder(fromIndex: number, toIndex: number) {
     const newRows = [...rows]
     newRows.splice(toIndex, 0, newRows.splice(fromIndex, 1)[0])
-    setRows(newRows)
+    updateRows(newRows)
   }
 
   return (
