@@ -3,6 +3,7 @@ import React from "react"
 import css from "./RuleMaker.module.scss"
 
 import InputTable from "Components/InputTable/InputTable"
+import { IInputRow } from "./types"
 
 // import { useDispatch, useSelector } from "react-redux"
 
@@ -31,7 +32,7 @@ export default function RuleMaker() {
   //   setDefaultState()
   // }, [])
 
-  const rows = [
+  const newRows: IInputRow[] = [
     {
       id: 0,
       alligator: true,
@@ -56,7 +57,7 @@ export default function RuleMaker() {
       { title: "Chilli's", year: 1974 },
       { title: "Denny's", year: 1974 },
     ],
-    rows,
+    newRows,
   }
 
   return (

@@ -1,42 +1,27 @@
-import { useState } from "react"
-import { DndProvider } from "react-dnd"
-import { HTML5Backend } from "react-dnd-html5-backend"
-import DataGrid from "react-data-grid"
-import cx from "classnames"
-import { DraggableRowRenderer } from "./DraggableRowRenderer"
 import { Button } from "react-bootstrap"
+import { DndProvider } from "react-dnd"
+import { DraggableRowRenderer } from "./DraggableRowRenderer"
+import { HTML5Backend } from "react-dnd-html5-backend"
+import { useEffect, useState } from "react"
+import cx from "classnames"
+import DataGrid from "react-data-grid"
 
 import MyMultiSelect from "Components/MultiSelect/MultiSelect"
 
 import { IUpdateRestaurant, IUpdateRow } from "./types"
+import { IInputRow } from "Components/RuleMaker/types"
 
 import css from "./InputTable.module.scss"
 
-function createRows() {
-  const rows = [
-    {
-      id: 0,
-      alligator: true,
-      bunny: false,
-      cat: false,
-      restaurant: "Applebees",
-    },
-    { id: 1, alligator: false, bunny: true, cat: true, restaurant: "Denny's" },
-    {
-      id: 2,
-      alligator: true,
-      bunny: false,
-      cat: false,
-      restaurant: "Chilli's",
-    },
-  ]
-  return rows
-}
-
 export default function InputTable(props: any) {
-  const { restaurantList } = props
+  const { restaurantList, newRows } = props
+  const dummyRow: IInputRow = { restaurant: restaurantList[0] }
 
-  const [rows, setRows] = useState(createRows)
+  const [rows, setRows] = useState([dummyRow])
+
+  useEffect(() => {
+    setRows(newRows)
+  }, [newRows])
 
   const columns = [
     {
@@ -86,7 +71,9 @@ export default function InputTable(props: any) {
   const updateRow = ({ columnName, rowId }: IUpdateRow) => {
     const newRows = [...rows]
 
-    const row = newRows.find((row) => row.id === rowId)
+    const row = newRows.find((row) => {
+      return row.id === rowId
+    })
     if (row && columnName) {
       // messy gymnastics to avoid a type error when using object bracket notation
       const testRow: { [key: string]: any } = { ...row }
@@ -102,7 +89,7 @@ export default function InputTable(props: any) {
     const newRows = [...rows]
 
     const row = newRows.find((row) => row.id === rowId)
-    if (row) {
+    if (row && row.restaurant !== undefined) {
       row.restaurant = newValue
       console.log("setting rows") // zzz
       setRows(newRows)
