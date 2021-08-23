@@ -31,8 +31,12 @@ export default function RuleMaker() {
 
   return (
     <div className={css.main}>
-      <InputTable {...inputTableProps} />
-      <OutputTable {...inputTableProps} />
+      <div className={css.card}>
+        <InputTable {...inputTableProps} />
+      </div>
+      <div className={css.card}>
+        <OutputTable {...inputTableProps} />
+      </div>
     </div>
   )
 }

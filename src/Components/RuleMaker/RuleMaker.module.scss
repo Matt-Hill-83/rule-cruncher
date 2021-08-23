@@ -3,10 +3,21 @@
   flex: 1 1;
   flex-direction: column;
   border: 1px solid rgb(74, 74, 74) !important;
-  // height: 60%;
-  overflow: auto;
-  margin: 2%;
-  border-radius: 6px;
-  box-shadow: 5px -5px 5px 0px #bcbcbc;
-  // background: #ededed;
+
+  // overflow: auto;
+  padding: var(--CS-margin-02);
+
+  .card {
+    display: flex;
+    flex: 1;
+    // width: 100%;
+    // flex: 1 1;
+    border: 1px solid rgb(74, 74, 74) !important;
+    margin-bottom: var(--CS-margin-02);
+
+    // overflow: auto;
+    // margin: var(--CS-margin-02);
+    border-radius: 6px;
+    box-shadow: 5px -5px 5px 0px #bcbcbc;
+  }
 }
