@@ -27,7 +27,7 @@ export default function InputTable(props: any) {
     {
       key: "id",
       name: "Rule Id",
-      width: 30,
+      width: 20,
     },
     {
       key: "alligator",
@@ -144,7 +144,6 @@ export default function InputTable(props: any) {
   function onRowReorder(fromIndex: number, toIndex: number) {
     const newRows = [...rows]
     newRows.splice(toIndex, 0, newRows.splice(fromIndex, 1)[0])
-
     setRows(newRows)
   }
 

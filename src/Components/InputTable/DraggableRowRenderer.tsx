@@ -1,18 +1,10 @@
 import { useDrag, useDrop } from "react-dnd"
 import clsx from "clsx"
-// import { css } from "@linaria/core"
+import css from "./DraggableRowRenderer.module.scss"
 
 import type { RowRendererProps } from "react-data-grid"
 import { Row } from "react-data-grid"
 import { useCombinedRefs } from "./useCombinedRefs"
-
-// const rowDraggingClassname = css`
-//   opacity: 0.5;
-// `
-
-// const rowOverClassname = css`
-//   background-color: #ececec;
-// `
 
 interface DraggableRowRenderProps<R, SR> extends RowRendererProps<R, SR> {
   onRowReorder: (sourceIndex: number, targetIndex: number) => void
@@ -44,17 +36,17 @@ export function DraggableRowRenderer<R, SR>({
     }),
   })
 
-  //   className = clsx(className, {
-  //     [rowDraggingClassname]: isDragging,
-  //     [rowOverClassname]: isOver,
-  //   })
+  className = clsx(className, {
+    [css.rowDraggingClassname]: isDragging,
+    [css.rowOverClassname]: isOver,
+  })
 
   return (
     <Row
       ref={useCombinedRefs(drag, drop)}
       rowIdx={rowIdx}
       isRowSelected={isRowSelected}
-      //   className={className}
+      className={className}
       {...props}
     />
   )
