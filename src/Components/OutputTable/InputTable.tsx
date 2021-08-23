@@ -14,11 +14,10 @@ import { IUpdateRestaurant, IUpdateRow } from "./types"
 import css from "./InputTable.module.scss"
 
 export default function InputTable(props: any) {
-  const { restaurantList, inputTableRows, dummyRow, onChange } = props
+  const { restaurantList, inputTableRows, dummyRow } = props
   const [rows, setRows] = useState([dummyRow])
 
   useEffect(() => {
-    console.log("useEffect - IT") // zzz
     setRows(inputTableRows)
   }, [inputTableRows])
 
@@ -67,11 +66,6 @@ export default function InputTable(props: any) {
     })
   }
 
-  const updateRows = (newRows: IUpdateRow[]) => {
-    onChange(newRows)
-    // setRows(newRows)
-  }
-
   const updateRow = ({ columnName, rowId }: IUpdateRow) => {
     const newRows = [...rows]
     const row = newRows.find((row) => row.id === rowId)
@@ -82,7 +76,7 @@ export default function InputTable(props: any) {
       testRow[columnName] = !testRow[columnName]
       Object.assign(row, testRow)
 
-      updateRows(newRows)
+      setRows(newRows)
     }
   }
 
@@ -94,7 +88,7 @@ export default function InputTable(props: any) {
     if (row && row.restaurant !== undefined) {
       row.restaurant = newValue
       console.log("setting rows") // zzz
-      updateRows(newRows)
+      setRows(newRows)
     }
   }
 

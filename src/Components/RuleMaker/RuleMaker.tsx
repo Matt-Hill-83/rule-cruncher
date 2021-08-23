@@ -1,10 +1,11 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 
 import css from "./RuleMaker.module.scss"
 
 import InputTable from "Components/InputTable/InputTable"
 import { IInputRow } from "./types"
 import { RestaurantNames } from "Constants/General"
+import * as data from "./data"
 
 // import { useDispatch, useSelector } from "react-redux"
 
@@ -33,37 +34,25 @@ export default function RuleMaker() {
   //   setDefaultState()
   // }, [])
 
-  const newRows: IInputRow[] = [
-    {
-      id: 0,
-      alligator: true,
-      bunny: false,
-      cat: false,
-      restaurant: RestaurantNames.APPLEBEES,
-    },
-    {
-      id: 1,
-      alligator: false,
-      bunny: true,
-      cat: true,
-      restaurant: RestaurantNames.BURGERKING,
-    },
-    {
-      id: 2,
-      alligator: true,
-      bunny: false,
-      cat: false,
-      restaurant: RestaurantNames.CHILLIS,
-    },
-  ]
+  const { inputTableRows, restaurantList, inputTableDummyRow } = data
+  const defaultData: IInputRow[] = []
+
+  const [inputTableData, setInputTableData] = useState(defaultData)
+
+  useEffect(() => {
+    setInputTableData(inputTableRows)
+  }, [inputTableRows])
+
+  const updateTableData = (newRows: IInputRow[]) => {
+    console.log("updateTableData") // zzz
+    setInputTableData(newRows)
+  }
 
   const inputTableProps = {
-    restaurantList: [
-      { title: RestaurantNames.APPLEBEES },
-      { title: RestaurantNames.BURGERKING },
-      { title: RestaurantNames.CHILLIS },
-    ],
-    newRows,
+    restaurantList,
+    inputTableRows: inputTableData,
+    dummyRow: inputTableDummyRow,
+    onChange: updateTableData,
   }
 
   return (
