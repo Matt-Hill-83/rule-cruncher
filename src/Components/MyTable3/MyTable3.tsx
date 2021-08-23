@@ -63,14 +63,19 @@ export default function MyTable3() {
       width: 300,
     },
   ]
-
-  const clickButton = ({
-    columnName,
-    rowId,
-  }: {
+  interface IUpdateRow {
     columnName: string
     rowId: number
-  }) => {
+  }
+
+  const clickButton = ({ columnName, rowId }: IUpdateRow) => {
+    updateRow({
+      columnName,
+      rowId,
+    })
+  }
+
+  const updateRow = ({ columnName, rowId }: IUpdateRow) => {
     const newRows = [...rows]
 
     const row = newRows.find((row) => row.id === rowId)
