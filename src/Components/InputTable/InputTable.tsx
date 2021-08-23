@@ -13,6 +13,8 @@ import { IUpdateRestaurant, IUpdateRow } from "./types"
 
 import css from "./InputTable.module.scss"
 
+const multiSelectInputWidth = 200
+
 export default function InputTable(props: any) {
   const { restaurantList, inputTableRows, dummyRow, onChange } = props
   const [rows, setRows] = useState([dummyRow])
@@ -56,13 +58,13 @@ export default function InputTable(props: any) {
       key: "restaurant",
       name: "Restaurant",
       formatter: (info: any) => renderRestaurant(info),
-      width: 300,
+      width: multiSelectInputWidth,
     },
   ]
 
   const updateRows = (newRows: IUpdateRow[]) => {
     onChange(newRows)
-    // setRows(newRows)
+    setRows(newRows)
   }
 
   const updateRow = ({ columnName, rowId }: IUpdateRow) => {
@@ -104,6 +106,7 @@ export default function InputTable(props: any) {
     const value: string = row[columnName]
 
     const multiSelectProps = {
+      inputWidth: multiSelectInputWidth,
       initialValue: value,
       listItems,
       className: css.multiPicker,
@@ -143,8 +146,6 @@ export default function InputTable(props: any) {
     newRows.splice(toIndex, 0, newRows.splice(fromIndex, 1)[0])
     setRows(newRows)
   }
-
-  console.log("rows", rows) // zzz
 
   return (
     <DndProvider backend={HTML5Backend}>
