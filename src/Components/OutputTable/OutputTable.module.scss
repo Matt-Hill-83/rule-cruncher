@@ -1,3 +1,11 @@
+.restaurant {
+  display: flex;
+  flex: 1 1;
+  background: var(--purple-200);
+  padding-left: 15px;
+  font-size: 18px;
+}
+
 .multiPicker {
   background: var(--purple-200);
 }
