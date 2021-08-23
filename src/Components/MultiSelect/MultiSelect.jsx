@@ -6,20 +6,20 @@ export default function MyMultiSelect(props) {
   const { listItems, className, initialValue, onChange } = props
   const options = listItems.map((item) => item.title)
 
-  const [state, setState] = useState("")
+  const [value, setValue] = useState("")
+
+  useEffect(() => {
+    setValue(initialValue)
+  }, [initialValue])
 
   const localOnChange = (event, newValue) => {
-    setState(newValue)
+    setValue(newValue)
     onChange?.(newValue)
   }
 
-  useEffect(() => {
-    setState(initialValue)
-  }, [initialValue])
-
   return (
     <Autocomplete
-      value={state}
+      value={value}
       onChange={localOnChange}
       options={options}
       style={{ width: 300 }}
