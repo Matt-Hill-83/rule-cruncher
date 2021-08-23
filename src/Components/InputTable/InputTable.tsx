@@ -1,11 +1,12 @@
 import { Button } from "react-bootstrap"
-import { DndProvider } from "react-dnd"
-import { DraggableRowRenderer } from "./DraggableRowRenderer"
-import { HTML5Backend } from "react-dnd-html5-backend"
 import { useEffect, useState } from "react"
+
+import { DndProvider } from "react-dnd"
+import { HTML5Backend } from "react-dnd-html5-backend"
 import cx from "classnames"
 import DataGrid from "react-data-grid"
 
+import { DraggableRowRenderer } from "./DraggableRowRenderer"
 import MyMultiSelect from "Components/MultiSelect/MultiSelect"
 
 import { IUpdateRestaurant, IUpdateRow } from "./types"

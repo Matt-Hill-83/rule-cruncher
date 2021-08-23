@@ -39,15 +39,21 @@ export default function RuleMaker() {
       alligator: true,
       bunny: false,
       cat: false,
-      restaurant: "Applebees",
+      restaurant: RestaurantNames.APPLEBEES,
     },
-    { id: 1, alligator: false, bunny: true, cat: true, restaurant: "Denny's" },
+    {
+      id: 1,
+      alligator: false,
+      bunny: true,
+      cat: true,
+      restaurant: RestaurantNames.BURGERKING,
+    },
     {
       id: 2,
       alligator: true,
       bunny: false,
       cat: false,
-      restaurant: "Chilli's",
+      restaurant: RestaurantNames.CHILLIS,
     },
   ]
 
