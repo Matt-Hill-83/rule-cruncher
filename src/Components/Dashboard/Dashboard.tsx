@@ -13,9 +13,6 @@ function Dashboard() {
       <div className={css.controls}>
         <RuleMaker />
       </div>
-      <Spacer />
-      <div className={css.charts}></div>
-      <Spacer />
     </div>
   )
 }

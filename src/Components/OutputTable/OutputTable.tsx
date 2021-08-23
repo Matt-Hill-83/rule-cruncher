@@ -11,13 +11,16 @@ import MyMultiSelect from "Components/MultiSelect/MultiSelect"
 
 import { IUpdateRestaurant, IUpdateRow } from "./types"
 
-import css from "./InputTable.module.scss"
+import css from "./OutputTable.module.scss"
 
-export default function InputTable(props: any) {
-  const { restaurantList, inputTableRows, dummyRow } = props
+const multiSelectInputWidth = 200
+
+export default function OutputTable(props: any) {
+  const { restaurantList, inputTableRows, dummyRow, onChange } = props
   const [rows, setRows] = useState([dummyRow])
 
   useEffect(() => {
+    console.log("useEffect - IT") // zzz
     setRows(inputTableRows)
   }, [inputTableRows])
 
@@ -49,21 +52,19 @@ export default function InputTable(props: any) {
       key: "",
       name: "",
       formatter: (info: any) => renderArrow(info),
-      width: 30,
+      width: 200,
     },
     {
       key: "restaurant",
       name: "Restaurant",
       formatter: (info: any) => renderRestaurant(info),
-      width: 300,
+      width: multiSelectInputWidth,
     },
   ]
 
-  const clickButton = ({ columnName, rowId }: IUpdateRow) => {
-    updateRow({
-      columnName,
-      rowId,
-    })
+  const updateRows = (newRows: IUpdateRow[]) => {
+    onChange(newRows)
+    setRows(newRows)
   }
 
   const updateRow = ({ columnName, rowId }: IUpdateRow) => {
@@ -76,7 +77,7 @@ export default function InputTable(props: any) {
       testRow[columnName] = !testRow[columnName]
       Object.assign(row, testRow)
 
-      setRows(newRows)
+      updateRows(newRows)
     }
   }
 
@@ -88,7 +89,7 @@ export default function InputTable(props: any) {
     if (row && row.restaurant !== undefined) {
       row.restaurant = newValue
       console.log("setting rows") // zzz
-      setRows(newRows)
+      updateRows(newRows)
     }
   }
 
@@ -105,6 +106,7 @@ export default function InputTable(props: any) {
     const value: string = row[columnName]
 
     const multiSelectProps = {
+      inputWidth: multiSelectInputWidth,
       initialValue: value,
       listItems,
       className: css.multiPicker,
@@ -131,7 +133,7 @@ export default function InputTable(props: any) {
 
     return (
       <Button
-        onClick={() => clickButton({ columnName, rowId: row.id })}
+        onClick={() => updateRow({ columnName, rowId: row.id })}
         className={className}
       >
         {value ? "true" : ""}
@@ -139,24 +141,5 @@ export default function InputTable(props: any) {
     )
   }
 
-  function onRowReorder(fromIndex: number, toIndex: number) {
-    const newRows = [...rows]
-    newRows.splice(toIndex, 0, newRows.splice(fromIndex, 1)[0])
-    setRows(newRows)
-  }
-
-  console.log("rows", rows) // zzz
-
-  return (
-    <DndProvider backend={HTML5Backend}>
-      <DataGrid
-        className={css.main}
-        columns={columns}
-        rows={rows}
-        rowRenderer={(p) => (
-          <DraggableRowRenderer {...p} onRowReorder={onRowReorder} />
-        )}
-      />
-    </DndProvider>
-  )
+  return <DataGrid className={css.main} columns={columns} rows={rows} />
 }

@@ -6,6 +6,7 @@ import InputTable from "Components/InputTable/InputTable"
 import { IInputRow } from "./types"
 import { RestaurantNames } from "Constants/General"
 import * as data from "./data"
+import OutputTable from "Components/OutputTable/OutputTable"
 
 // import { useDispatch, useSelector } from "react-redux"
 
@@ -58,6 +59,7 @@ export default function RuleMaker() {
   return (
     <div className={css.main}>
       <InputTable {...inputTableProps} />
+      <OutputTable {...inputTableProps} />
     </div>
   )
 }
