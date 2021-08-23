@@ -2,7 +2,7 @@ import React from "react"
 
 import css from "./RuleMaker.module.scss"
 
-import MyTable3 from "Components/MyTable3/MyTable3"
+import InputTable from "Components/InputTable/InputTable"
 
 // import { useDispatch, useSelector } from "react-redux"
 
@@ -61,7 +61,7 @@ export default function RuleMaker() {
 
   return (
     <div className={css.main}>
-      <MyTable3 {...inputTableProps} />
+      <InputTable {...inputTableProps} />
     </div>
   )
 }

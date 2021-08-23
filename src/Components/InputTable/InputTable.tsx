@@ -10,7 +10,7 @@ import MyMultiSelect from "Components/MultiSelect/MultiSelect"
 
 import { IUpdateRestaurant, IUpdateRow } from "./types"
 
-import css from "./MyTable3.module.scss"
+import css from "./InputTable.module.scss"
 
 function createRows() {
   const rows = [
@@ -33,7 +33,7 @@ function createRows() {
   return rows
 }
 
-export default function MyTable3(props: any) {
+export default function InputTable(props: any) {
   const { restaurantList } = props
 
   const [rows, setRows] = useState(createRows)
