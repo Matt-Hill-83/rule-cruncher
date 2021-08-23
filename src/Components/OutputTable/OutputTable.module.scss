@@ -1,3 +1,9 @@
+:global {
+  .rdg-cell[aria-selected="true"] {
+    box-shadow: none;
+  }
+}
+
 .restaurant {
   display: flex;
   flex: 1 1;
@@ -26,6 +32,7 @@
       background-color: var(--rdg-cell-bk-color) !important;
       padding: 0px;
     }
+
     .rdg-header-row {
       .rdg-cell {
         background-color: var(--rdg-header-bk-color) !important;
@@ -47,17 +54,9 @@
 
   .true {
     background-color: var(--rdg-button-true);
-
-    &:hover {
-      background-color: var(--rdg-button-true-hover);
-    }
   }
 
   .false {
     background-color: var(--rdg-button-false);
-
-    &:hover {
-      background-color: var(--rdg-button-false-hover);
-    }
   }
 }
