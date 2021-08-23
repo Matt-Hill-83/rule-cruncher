@@ -13,15 +13,22 @@ export const inputTableRows: IInputRow[] = [
     id: 1,
     alligator: false,
     bunny: true,
-    cat: true,
+    cat: false,
     restaurant: RestaurantNames.BURGERKING,
   },
   {
     id: 2,
     alligator: true,
     bunny: false,
-    cat: false,
-    restaurant: RestaurantNames.CHILLIS,
+    cat: true,
+    restaurant: RestaurantNames.DOUNTSHOPPE,
+  },
+  {
+    id: 2,
+    alligator: false,
+    bunny: false,
+    cat: true,
+    restaurant: RestaurantNames.DOUNTSHOPPE,
   },
 ]
 
@@ -29,6 +36,7 @@ export const restaurantList = [
   { title: RestaurantNames.APPLEBEES },
   { title: RestaurantNames.BURGERKING },
   { title: RestaurantNames.CHILLIS },
+  { title: RestaurantNames.DOUNTSHOPPE },
 ]
 
 export const inputTableDummyRow: IInputRow = {

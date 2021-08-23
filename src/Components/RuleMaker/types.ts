@@ -4,4 +4,5 @@ export interface IInputRow {
   bunny?: boolean
   cat?: boolean
   restaurant?: string
+  isMatch?: boolean
 }

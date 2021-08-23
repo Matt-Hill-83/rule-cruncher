@@ -21,11 +21,27 @@ const processRows = (rows: IInputRow[]) => {
 
   allPossibleRows.forEach((derivedRow) => {
     realRows.forEach((realRow) => {
-      if (
-        realRow.alligator === derivedRow.alligator &&
-        realRow.bunny === derivedRow.bunny &&
-        realRow.cat === derivedRow.cat
-      ) {
+      let isMatch = true
+
+      const trueA = realRow.alligator === true
+      const trueB = realRow.bunny === true
+      const trueC = realRow.cat === true
+
+      const matchA = realRow.alligator === derivedRow.alligator
+      const matchB = realRow.bunny === derivedRow.bunny
+      const matchC = realRow.cat === derivedRow.cat
+
+      if (trueA) {
+        isMatch = isMatch && matchA
+      }
+      if (trueB) {
+        isMatch = isMatch && matchB
+      }
+      if (trueC) {
+        isMatch = isMatch && matchC
+      }
+
+      if (isMatch) {
         const newId = realRow.id
         if (typeof newId === "string") {
           derivedRow.id = parseInt(newId)
@@ -33,11 +49,18 @@ const processRows = (rows: IInputRow[]) => {
           derivedRow.id = newId
         }
         derivedRow.restaurant = realRow.restaurant
+        derivedRow.isMatch = true
         console.log("match") // zzz
-        return
+      } else {
+        derivedRow.id = 999
       }
     })
   })
+
+  allPossibleRows.sort((a: any, b: any) =>
+    a.id > b.id ? 1 : b.id > a.id ? -1 : 0
+  )
+
   return allPossibleRows
 }
 
@@ -66,7 +89,7 @@ const getAllPossibleRows = (rows: IInputRow[]) => {
       [AnimalNames.ALLIGATOR.toLowerCase()]: binary[0] === "1" ? true : false,
       [AnimalNames.BUNNY.toLowerCase()]: binary[1] === "1" ? true : false,
       [AnimalNames.CAT.toLowerCase()]: binary[2] === "1" ? true : false,
-      restaurant: RestaurantNames.APPLEBEES,
+      restaurant: "",
     }
     allPossibleRows.push(newRow)
   })
