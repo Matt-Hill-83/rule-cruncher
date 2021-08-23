@@ -3,3 +3,8 @@ export const RestaurantNames = {
   APPLEBEES: "Applebees",
   BURGERKING: "Burger King",
 }
+export const AnimalNames = {
+  ALLIGATOR: "Alligator",
+  BUNNY: "Bunny",
+  CAT: "Cat",
+}
