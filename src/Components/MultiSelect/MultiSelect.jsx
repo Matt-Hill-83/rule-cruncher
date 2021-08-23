@@ -14,15 +14,11 @@ export default function MyMultiSelect(props) {
   }
 
   useEffect(() => {
-    console.log("initialValue", initialValue) // zzz
     setState(initialValue)
   }, [initialValue])
 
-  console.log("render MS") // zzz
-  console.log("className", className) // zzz
   return (
     <Autocomplete
-      // className={className}
       value={state}
       onChange={localOnChange}
       options={options}

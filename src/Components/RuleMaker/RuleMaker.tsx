@@ -31,6 +31,24 @@ export default function RuleMaker() {
   //   setDefaultState()
   // }, [])
 
+  const rows = [
+    {
+      id: 0,
+      alligator: true,
+      bunny: false,
+      cat: false,
+      restaurant: "Applebees",
+    },
+    { id: 1, alligator: false, bunny: true, cat: true, restaurant: "Denny's" },
+    {
+      id: 2,
+      alligator: true,
+      bunny: false,
+      cat: false,
+      restaurant: "Chilli's",
+    },
+  ]
+
   const inputTableProps = {
     restaurantList: [
       { title: "Applebees", year: 1994 },
@@ -38,6 +56,7 @@ export default function RuleMaker() {
       { title: "Chilli's", year: 1974 },
       { title: "Denny's", year: 1974 },
     ],
+    rows,
   }
 
   return (
