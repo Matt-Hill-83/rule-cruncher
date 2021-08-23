@@ -1,10 +1,8 @@
 import css from "./TopNav.module.scss"
 
 import { IPowerPanelProps } from "../../types"
-import PowerPanel from "../PowerPanel/PowerPanel"
 
 interface ITopNavProps {
-  // powerPanelProps: any
   powerPanelProps: IPowerPanelProps
 }
 

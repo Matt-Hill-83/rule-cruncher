@@ -10,25 +10,9 @@
   margin-left: var(--leftNavWidth);
   position: relative;
 
-  .instructions {
-    display: flex;
-    flex-direction: column;
-
-    width: 100%;
-    height: 5%;
-    padding: var(--CS-margin-02);
-    border: 4px solid red !important;
-  }
-
   .controls {
     display: flex;
     width: 100%;
     height: 100%;
-  }
-
-  .charts {
-    display: flex;
-    width: 5%;
-    border: 1px solid green !important;
   }
 }
