@@ -16,6 +16,32 @@ function convertIntToBinary(num: number, digits: number) {
 }
 
 const processRows = (rows: IInputRow[]) => {
+  const allPossibleRows = getAllPossibleRows(rows)
+  const realRows = rows
+
+  allPossibleRows.forEach((derivedRow) => {
+    realRows.forEach((realRow) => {
+      if (
+        realRow.alligator === derivedRow.alligator &&
+        realRow.bunny === derivedRow.bunny &&
+        realRow.cat === derivedRow.cat
+      ) {
+        const newId = realRow.id
+        if (typeof newId === "string") {
+          derivedRow.id = parseInt(newId)
+        } else {
+          derivedRow.id = newId
+        }
+        derivedRow.restaurant = realRow.restaurant
+        console.log("match") // zzz
+        return
+      }
+    })
+  })
+  return allPossibleRows
+}
+
+const getAllPossibleRows = (rows: IInputRow[]) => {
   console.log("rows", rows) // zzz
   const allPossibleRows: IInputRow[] = []
 
