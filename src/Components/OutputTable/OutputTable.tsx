@@ -3,8 +3,6 @@ import { useEffect, useState } from "react"
 import cx from "classnames"
 import DataGrid from "react-data-grid"
 
-import { IUpdateRestaurant, IUpdateRow } from "./types"
-
 import css from "./OutputTable.module.scss"
 
 const multiSelectInputWidth = 200
@@ -51,7 +49,6 @@ export default function OutputTable(props: any) {
     {
       key: "restaurant",
       name: "Restaurant",
-      className: css.restaurant,
       formatter: (info: any) => renderRestaurant(info),
       width: multiSelectInputWidth,
     },
