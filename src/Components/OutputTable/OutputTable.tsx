@@ -112,38 +112,5 @@ export default function OutputTable(props: any) {
     return <div className={className}>{value ? "true" : ""}</div>
   }
 
-  const sortRows =
-    (initialRows: any, sortColumn: any, sortDirection: any) => (rows: any) => {
-      const comparer: any = (a: any, b: any) => {
-        if (sortDirection === "ASC") {
-          return a[sortColumn] > b[sortColumn] ? 1 : -1
-        } else if (sortDirection === "DESC") {
-          return a[sortColumn] < b[sortColumn] ? 1 : -1
-        }
-      }
-      return sortDirection === "NONE" ? initialRows : [...rows].sort(comparer)
-    }
-
-  return (
-    <DataGrid
-      columns={columns}
-      rowGetter={(i: number) => rows[i]}
-      rowsCount={ROW_COUNT}
-      minHeight={500}
-      onGridSort={(sortColumn, sortDirection) =>
-        setRows(sortRows(initialRows, sortColumn, sortDirection))
-      }
-    />
-  )
-
-  return (
-    <DataGrid
-      className={css.main}
-      columns={columns}
-      rows={rows}
-      // onGridSort={(sortColumn, sortDirection) =>
-      //   setRows(sortRows(initialRows, sortColumn, sortDirection))
-      // }
-    />
-  )
+  return <DataGrid className={css.main} columns={columns} rows={rows} />
 }
