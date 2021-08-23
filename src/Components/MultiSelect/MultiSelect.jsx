@@ -1,27 +1,28 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import TextField from "@material-ui/core/TextField"
 import Autocomplete from "@material-ui/lab/Autocomplete"
 
-import { useDispatch, useSelector } from "react-redux"
-
-import { sniff } from "../../state/action-creators"
-
 export default function MyMultiSelect(props) {
-  const { listItems } = props
-  const listItems2 = listItems.map((item) => item.title)
-  const dispatch = useDispatch()
+  const { listItems, className, initialValue, onChange } = props
+  const options = listItems.map((item) => item.title)
 
-  const state2 = useSelector((state) => state.crypto)
+  const [state, setState] = useState("")
 
-  const onChange = (event, newValue) => {
-    dispatch(sniff(newValue))
+  const localOnChange = (event, newValue) => {
+    setState(newValue)
+    onChange?.()
   }
+
+  useEffect(() => {
+    setState("Bunny")
+  }, [initialValue])
 
   return (
     <Autocomplete
-      value={state2}
-      onChange={onChange}
-      options={listItems2}
+      className={className}
+      value={state}
+      onChange={localOnChange}
+      options={options}
       style={{ width: 300 }}
       renderInput={(params) => <TextField {...params} variant="outlined" />}
     />

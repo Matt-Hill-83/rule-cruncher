@@ -3,10 +3,10 @@ import { DndProvider } from "react-dnd"
 import { HTML5Backend } from "react-dnd-html5-backend"
 import DataGrid from "react-data-grid"
 import { DraggableRowRenderer } from "./DraggableRowRenderer"
-
 import css from "./MyTable3.module.scss"
 import { Button } from "react-bootstrap"
 import cx from "classnames"
+import MyMultiSelect from "Components/MultiSelect/MultiSelect"
 
 function createRows() {
   const rows = [
@@ -60,12 +60,9 @@ export default function MyTable3() {
       key: "restaurant",
       name: "Restaurant",
       formatter: (info: any) => renderRestaurant(info),
-      width: 30,
+      width: 300,
     },
   ]
-
-  // Todo - add rule number and drag handle
-  // Todo - add output table
 
   const clickButton = ({
     columnName,
@@ -92,9 +89,28 @@ export default function MyTable3() {
   }
 
   const renderRestaurant = (info: any) => {
+    const listItems = [
+      { title: "Alligator", year: 1994 },
+      { title: "Bunny", year: 1972 },
+      { title: "Caterpillar", year: 1974 },
+    ]
+
     const { row, column } = info
+    const columnName: string = column.key
+    const value: string = row[columnName]
+
+    const multiSelectProps = {
+      initialValue: value,
+      listItems,
+      className: css.multiPicker,
+    }
+
     console.log("info", info) // zzz
-    return <div className={css.arrow}>{`===>`}</div>
+    return (
+      <div className={css.restaurant}>
+        <MyMultiSelect {...multiSelectProps} />
+      </div>
+    )
   }
 
   const renderButton = (info: any) => {
