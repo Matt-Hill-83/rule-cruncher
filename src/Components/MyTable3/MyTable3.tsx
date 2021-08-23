@@ -2,12 +2,15 @@ import { useState } from "react"
 import { DndProvider } from "react-dnd"
 import { HTML5Backend } from "react-dnd-html5-backend"
 import DataGrid from "react-data-grid"
-import { DraggableRowRenderer } from "./DraggableRowRenderer"
-import css from "./MyTable3.module.scss"
-import { Button } from "react-bootstrap"
 import cx from "classnames"
+import { DraggableRowRenderer } from "./DraggableRowRenderer"
+import { Button } from "react-bootstrap"
+
 import MyMultiSelect from "Components/MultiSelect/MultiSelect"
+
 import { IUpdateRestaurant, IUpdateRow } from "./types"
+
+import css from "./MyTable3.module.scss"
 
 function createRows() {
   const rows = [
@@ -30,7 +33,9 @@ function createRows() {
   return rows
 }
 
-export default function MyTable3() {
+export default function MyTable3(props: any) {
+  const { restaurantList } = props
+
   const [rows, setRows] = useState(createRows)
 
   const columns = [
@@ -110,12 +115,7 @@ export default function MyTable3() {
 
   const renderRestaurant = (info: any) => {
     console.log("renderRestaurant") // zzz
-    const listItems = [
-      { title: "Applebees", year: 1994 },
-      { title: "Burger King", year: 1972 },
-      { title: "Chilli's", year: 1974 },
-      { title: "Denny's", year: 1974 },
-    ]
+    const listItems = restaurantList
 
     const { row, column } = info
     const columnName: string = column.key

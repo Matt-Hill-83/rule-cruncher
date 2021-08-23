@@ -1,3 +1,7 @@
+.multiPicker {
+  background: var(--purple-200);
+}
+
 .main {
   display: flex;
   flex: 1;
@@ -21,10 +25,6 @@
       }
     }
     .restaurant {
-      border: 4px solid blue !important;
-    }
-
-    .multiPicker {
       border: 4px solid blue !important;
     }
   }

@@ -31,9 +31,18 @@ export default function RuleMaker() {
   //   setDefaultState()
   // }, [])
 
+  const inputTableProps = {
+    restaurantList: [
+      { title: "Applebees", year: 1994 },
+      { title: "Burger King", year: 1972 },
+      { title: "Chilli's", year: 1974 },
+      { title: "Denny's", year: 1974 },
+    ],
+  }
+
   return (
     <div className={css.main}>
-      <MyTable3 />
+      <MyTable3 {...inputTableProps} />
     </div>
   )
 }

@@ -19,14 +19,17 @@ export default function MyMultiSelect(props) {
   }, [initialValue])
 
   console.log("render MS") // zzz
+  console.log("className", className) // zzz
   return (
     <Autocomplete
-      className={className}
+      // className={className}
       value={state}
       onChange={localOnChange}
       options={options}
       style={{ width: 300 }}
-      renderInput={(params) => <TextField {...params} variant="outlined" />}
+      renderInput={(params) => (
+        <TextField {...params} variant="outlined" className={className} />
+      )}
     />
   )
 }
