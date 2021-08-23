@@ -32,7 +32,7 @@ function App() {
     setMyState,
   }
 
-  console.log("powerPanelProps", powerPanelProps) // zzz
+  console.log("App.js") // zzz
   return (
     <div className={css.main}>
       {JSON.stringify(myState)}

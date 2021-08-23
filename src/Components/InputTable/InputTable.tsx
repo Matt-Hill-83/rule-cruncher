@@ -20,7 +20,6 @@ export default function InputTable(props: any) {
   const [rows, setRows] = useState([dummyRow])
 
   useEffect(() => {
-    console.log("useEffect - IT") // zzz
     setRows(inputTableRows)
   }, [inputTableRows])
 
@@ -82,13 +81,11 @@ export default function InputTable(props: any) {
   }
 
   const updateRestaurant = ({ newValue, rowId }: IUpdateRestaurant) => {
-    console.log("updateRestaurant") // zzz
     const newRows = [...rows]
 
     const row = newRows.find((row) => row.id === rowId)
     if (row && row.restaurant !== undefined) {
       row.restaurant = newValue
-      console.log("setting rows") // zzz
       updateRows(newRows)
     }
   }
@@ -98,7 +95,6 @@ export default function InputTable(props: any) {
   }
 
   const renderRestaurant = (info: any) => {
-    console.log("renderRestaurant") // zzz
     const listItems = restaurantList
 
     const { row, column } = info

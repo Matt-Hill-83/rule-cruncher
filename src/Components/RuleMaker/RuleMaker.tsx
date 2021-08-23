@@ -45,7 +45,6 @@ export default function RuleMaker() {
   }, [inputTableRows])
 
   const updateTableData = (newRows: IInputRow[]) => {
-    console.log("updateTableData - RuleMaker") // zzz
     setInputTableData(newRows)
   }
 
