@@ -21,10 +21,10 @@ export const inputTableRows: IInputRow[] = [
     alligator: true,
     bunny: false,
     cat: true,
-    restaurant: RestaurantNames.DOUNTSHOPPE,
+    restaurant: RestaurantNames.CHILLIS,
   },
   {
-    id: 2,
+    id: 3,
     alligator: false,
     bunny: false,
     cat: true,

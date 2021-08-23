@@ -42,17 +42,14 @@ const processRows = (rows: IInputRow[]) => {
       }
 
       if (isMatch) {
-        const newId = realRow.id
-        if (typeof newId === "string") {
-          derivedRow.id = parseInt(newId)
-        } else {
-          derivedRow.id = newId
-        }
+        derivedRow.id = realRow.id
         derivedRow.restaurant = realRow.restaurant
         derivedRow.isMatch = true
-        console.log("match") // zzz
       } else {
-        derivedRow.id = 999
+        if (!derivedRow.isMatch) {
+          derivedRow.restaurant = "--none--"
+          derivedRow.id = 999
+        }
       }
     })
   })
