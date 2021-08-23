@@ -36,16 +36,15 @@ const processRows = (rows: IInputRow[]) => {
   }
 
   binaries.forEach((binary) => {
-    binary.forEach((digit) => {
-      const newRow = {
-        [AnimalNames.ALLIGATOR]: digit === "1" ? true : false,
-        [AnimalNames.BUNNY]: digit === "1" ? true : false,
-        [AnimalNames.CAT]: digit === "1" ? true : false,
-        restaurant: RestaurantNames.APPLEBEES,
-      }
-      allPossibleRows.push(newRow)
-    })
+    const newRow = {
+      [AnimalNames.ALLIGATOR.toLowerCase()]: binary[0] === "1" ? true : false,
+      [AnimalNames.BUNNY.toLowerCase()]: binary[1] === "1" ? true : false,
+      [AnimalNames.CAT.toLowerCase()]: binary[2] === "1" ? true : false,
+      restaurant: RestaurantNames.APPLEBEES,
+    }
+    allPossibleRows.push(newRow)
   })
+
   console.log("allPossibleRows", allPossibleRows) // zzz
   return allPossibleRows
   // return rows
