@@ -7,7 +7,7 @@ import css from "./MyTable3.module.scss"
 import { Button } from "react-bootstrap"
 import cx from "classnames"
 import MyMultiSelect from "Components/MultiSelect/MultiSelect"
-import { IUpdateRow } from "./types"
+import { IUpdateRestaurant, IUpdateRow } from "./types"
 
 function createRows() {
   const rows = [
@@ -19,7 +19,13 @@ function createRows() {
       restaurant: "Applebees",
     },
     { id: 1, alligator: false, bunny: true, cat: true, restaurant: "Denny's" },
-    { id: 2, alligator: true, bunny: false, cat: false, restaurant: "Denny's" },
+    {
+      id: 2,
+      alligator: true,
+      bunny: false,
+      cat: false,
+      restaurant: "Chilli's",
+    },
   ]
   return rows
 }
@@ -86,15 +92,29 @@ export default function MyTable3() {
     }
   }
 
+  const updateRestaurant = ({ newValue, rowId }: IUpdateRestaurant) => {
+    console.log("updateRestaurant") // zzz
+    const newRows = [...rows]
+
+    const row = newRows.find((row) => row.id === rowId)
+    if (row) {
+      row.restaurant = newValue
+      console.log("setting rows") // zzz
+      setRows(newRows)
+    }
+  }
+
   const renderArrow = (info: any) => {
     return <div className={css.arrow}>{`===>`}</div>
   }
 
   const renderRestaurant = (info: any) => {
+    console.log("renderRestaurant") // zzz
     const listItems = [
-      { title: "Alligator", year: 1994 },
-      { title: "Bunny", year: 1972 },
-      { title: "Caterpillar", year: 1974 },
+      { title: "Applebees", year: 1994 },
+      { title: "Burger King", year: 1972 },
+      { title: "Chilli's", year: 1974 },
+      { title: "Denny's", year: 1974 },
     ]
 
     const { row, column } = info
@@ -105,9 +125,10 @@ export default function MyTable3() {
       initialValue: value,
       listItems,
       className: css.multiPicker,
+      onChange: (newValue: string) =>
+        updateRestaurant({ newValue, rowId: row.id }),
     }
 
-    console.log("info", info) // zzz
     return (
       <div className={css.restaurant}>
         <MyMultiSelect {...multiSelectProps} />
@@ -141,6 +162,8 @@ export default function MyTable3() {
 
     setRows(newRows)
   }
+
+  console.log("rows", rows) // zzz
 
   return (
     <DndProvider backend={HTML5Backend}>

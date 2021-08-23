@@ -10,13 +10,15 @@ export default function MyMultiSelect(props) {
 
   const localOnChange = (event, newValue) => {
     setState(newValue)
-    onChange?.()
+    onChange?.(newValue)
   }
 
   useEffect(() => {
-    setState("Bunny")
+    console.log("initialValue", initialValue) // zzz
+    setState(initialValue)
   }, [initialValue])
 
+  console.log("render MS") // zzz
   return (
     <Autocomplete
       className={className}
