@@ -74,6 +74,7 @@ export default function InputTable(props: any) {
     const row = newRows.find((row) => {
       return row.id === rowId
     })
+
     if (row && columnName) {
       // messy gymnastics to avoid a type error when using object bracket notation
       const testRow: { [key: string]: any } = { ...row }
