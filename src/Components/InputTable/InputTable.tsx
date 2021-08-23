@@ -50,7 +50,7 @@ export default function InputTable(props: any) {
       key: "",
       name: "",
       formatter: (info: any) => renderArrow(info),
-      width: 30,
+      width: 200,
     },
     {
       key: "restaurant",
@@ -59,13 +59,6 @@ export default function InputTable(props: any) {
       width: 300,
     },
   ]
-
-  const clickButton = ({ columnName, rowId }: IUpdateRow) => {
-    updateRow({
-      columnName,
-      rowId,
-    })
-  }
 
   const updateRows = (newRows: IUpdateRow[]) => {
     onChange(newRows)
@@ -137,7 +130,7 @@ export default function InputTable(props: any) {
 
     return (
       <Button
-        onClick={() => clickButton({ columnName, rowId: row.id })}
+        onClick={() => updateRow({ columnName, rowId: row.id })}
         className={className}
       >
         {value ? "true" : ""}
