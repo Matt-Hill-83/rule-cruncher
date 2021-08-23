@@ -4,6 +4,7 @@ import css from "./RuleMaker.module.scss"
 
 import InputTable from "Components/InputTable/InputTable"
 import { IInputRow } from "./types"
+import { RestaurantNames } from "Constants/General"
 
 // import { useDispatch, useSelector } from "react-redux"
 
@@ -52,10 +53,9 @@ export default function RuleMaker() {
 
   const inputTableProps = {
     restaurantList: [
-      { title: "Applebees", year: 1994 },
-      { title: "Burger King", year: 1972 },
-      { title: "Chilli's", year: 1974 },
-      { title: "Denny's", year: 1974 },
+      { title: RestaurantNames.APPLEBEES },
+      { title: RestaurantNames.BURGERKING },
+      { title: RestaurantNames.CHILLIS },
     ],
     newRows,
   }

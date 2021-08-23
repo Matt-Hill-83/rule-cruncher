@@ -70,10 +70,7 @@ export default function InputTable(props: any) {
 
   const updateRow = ({ columnName, rowId }: IUpdateRow) => {
     const newRows = [...rows]
-
-    const row = newRows.find((row) => {
-      return row.id === rowId
-    })
+    const row = newRows.find((row) => row.id === rowId)
 
     if (row && columnName) {
       // messy gymnastics to avoid a type error when using object bracket notation
