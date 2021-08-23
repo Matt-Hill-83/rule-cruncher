@@ -2,6 +2,7 @@ body {
   // Colors
   --CS-margin-01: 1vh;
   --CS-margin-02: 2vh;
+  --CS-margin-04: 4vh;
 
   --white-000: rgb(255, 255, 255);
   --white-100: rgb(238, 238, 238);
@@ -29,7 +30,6 @@ body {
 
   // Artifacts
   --border-color: var(--purple-500);
-  --nav-border-color: var(--white-400);
 
   --topNavHeight: 50px;
   --leftNavWidth: 0vh;
@@ -44,4 +44,7 @@ body {
 
   --rdg-button-false: var(--yellow-400);
   --rdg-button-false-hover: var(--yellow-500);
+
+  --border-color: #e3e2de;
+  --nav-border-color: var(--border-color);
 }

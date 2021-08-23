@@ -32,10 +32,20 @@ export default function RuleMaker() {
   return (
     <div className={css.main}>
       <div className={cx(css.card, css.card1)}>
-        <InputTable {...inputTableProps} />
+        <div className={cx(css.header)}>
+          <div className={css.title}>Explicit Rules</div>
+        </div>
+        <div className={cx(css.table)}>
+          <InputTable {...inputTableProps} />
+        </div>
       </div>
       <div className={cx(css.card, css.card2)}>
-        <OutputTable {...inputTableProps} />
+        <div className={cx(css.header)}>
+          <div className={css.title}>Derived Rules</div>
+        </div>
+        <div className={cx(css.table)}>
+          <OutputTable {...inputTableProps} />
+        </div>
       </div>
     </div>
   )

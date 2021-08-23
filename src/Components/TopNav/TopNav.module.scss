@@ -5,12 +5,12 @@
   width: 100%;
 
   background: var(--white-000);
-  // background: var(--blue-050);
+
   z-index: 1001;
   top: 0;
   left: 0;
 
-  border-bottom: 2px solid var(--nav-border-color);
+  border-bottom: 1px solid var(--nav-border-color);
 
   .title {
     display: flex;
