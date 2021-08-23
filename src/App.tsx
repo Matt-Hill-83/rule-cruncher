@@ -35,7 +35,6 @@ function App() {
   console.log("App.js") // zzz
   return (
     <div className={css.main}>
-      {JSON.stringify(myState)}
       <TopNav powerPanelProps={powerPanelProps}></TopNav>
       <LeftNav myState={myState} setMyState={setMyState} />
       <Dashboard />

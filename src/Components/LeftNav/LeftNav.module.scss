@@ -3,8 +3,8 @@
   display: flex;
   width: var(--leftNavWidth);
   height: 100%;
-  // border: 1px solid red !important;
-  background: white;
+
+  background: var(--blue-050);
   z-index: 1000;
   top: 0;
   left: 0;

@@ -9,12 +9,9 @@ interface ITopNavProps {
 }
 
 function TopNav(props: ITopNavProps) {
-  const { powerPanelProps } = props
-
   return (
     <div className={css.main}>
-      Crypto Sniffer
-      <PowerPanel powerPanelProps={powerPanelProps} />
+      <div className={css.title}>Rule Cruncher</div>
     </div>
   )
 }

@@ -8,8 +8,6 @@ import RuleMaker from "Components/RuleMaker/RuleMaker"
 function Dashboard() {
   return (
     <div className={css.main}>
-      <div className={css.instructions}></div>
-      <Spacer />
       <div className={css.controls}>
         <RuleMaker />
       </div>

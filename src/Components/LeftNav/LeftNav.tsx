@@ -11,12 +11,7 @@ interface ITopNavProps {
 }
 
 function LeftNav(props: ITopNavProps) {
-  const { myState } = props
-  return (
-    <div className={css.main}>
-      <div className={css.textBox}>{JSON.stringify(myState)}</div>
-    </div>
-  )
+  return <div className={css.main}></div>
 }
 
 export default LeftNav

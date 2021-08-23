@@ -4,10 +4,18 @@
   height: var(--topNavHeight);
   width: 100%;
 
-  background: white;
+  background: var(--blue-050);
   z-index: 1001;
   top: 0;
   left: 0;
 
   border-bottom: 2px solid var(--nav-border-color);
+
+  .title {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+  }
 }
