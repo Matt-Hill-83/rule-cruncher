@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-
 import css from "./RuleMaker.module.scss"
 
 import InputTable from "Components/InputTable/InputTable"
@@ -7,6 +6,7 @@ import { IInputRow } from "./types"
 
 import * as data from "./data"
 import OutputTable from "Components/OutputTable/OutputTable"
+import cx from "classnames"
 
 export default function RuleMaker() {
   const { inputTableRows, restaurantList, inputTableDummyRow } = data
@@ -31,10 +31,10 @@ export default function RuleMaker() {
 
   return (
     <div className={css.main}>
-      <div className={css.card}>
+      <div className={cx(css.card, css.card1)}>
         <InputTable {...inputTableProps} />
       </div>
-      <div className={css.card}>
+      <div className={cx(css.card, css.card2)}>
         <OutputTable {...inputTableProps} />
       </div>
     </div>

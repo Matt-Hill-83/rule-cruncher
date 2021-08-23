@@ -1,9 +1,12 @@
 :global {
   .rdg {
-    border: 1px solid blue !important;
+    // border: 1px solid blue !important;
     // border: 4px solid blue !important;
     display: flex;
     height: auto;
+    border-right: none;
+    border-bottom: none;
+    background-color: transparent !important;
   }
 }
 
@@ -13,11 +16,12 @@
 
 .main {
   display: flex;
+  // flex: 1;
   flex: 1;
+  width: 50%;
   // height: 25%;
   background-color: var(--rdg-bk-color);
   margin: var(--CS-margin-02);
-  flex: 1;
 
   :global {
     .rdg-cell {

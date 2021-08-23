@@ -5,7 +5,7 @@ import DataGrid from "react-data-grid"
 import { IInputRow } from "Components/RuleMaker/types"
 
 import css from "./OutputTable.module.scss"
-import { AnimalNames, RestaurantNames } from "Constants/General"
+import { AnimalNames } from "Constants/General"
 
 const multiSelectInputWidth = 200
 
