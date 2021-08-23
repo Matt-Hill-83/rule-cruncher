@@ -7,6 +7,7 @@ import css from "./MyTable3.module.scss"
 import { Button } from "react-bootstrap"
 import cx from "classnames"
 import MyMultiSelect from "Components/MultiSelect/MultiSelect"
+import { IUpdateRow } from "./types"
 
 function createRows() {
   const rows = [
@@ -63,10 +64,6 @@ export default function MyTable3() {
       width: 300,
     },
   ]
-  interface IUpdateRow {
-    columnName: string
-    rowId: number
-  }
 
   const clickButton = ({ columnName, rowId }: IUpdateRow) => {
     updateRow({
